@@ -1,0 +1,482 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Create a table of content with links for PDF - Clean Pages</title>
+<meta name="description" content="Create clickable table of content for PDF without prorietary software">
+
+
+  <meta name="author" content="Chao Lin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Clean Pages">
+<meta property="og:title" content="Create a table of content with links for PDF">
+<meta property="og:url" content="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">
+
+
+  <meta property="og:description" content="Create clickable table of content for PDF without prorietary software">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-08-07T00:00:00-04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Chao Lin",
+      "url": "https://cleanpages.github.io/website/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/website/feed.xml" type="application/atom+xml" rel="alternate" title="Clean Pages Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/website/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/website/">
+          Clean Pages
+          <span class="site-subtitle">Coding on Linux</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/website/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/website/about/">About Me</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Create a table of content with links for PDF">
+    <meta itemprop="description" content="Create clickable table of content for PDF without prorietary software">
+    <meta itemprop="datePublished" content="2020-08-07T00:00:00-04:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Create a table of content with links for PDF
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#installation-of--pdftk">Installation of  PDFtk</a>
+    <ul>
+      <li><a href="#windows">Windows</a></li>
+      <li><a href="#linux">Linux</a></li>
+    </ul>
+  </li>
+  <li><a href="#creating-table-of-content-with-pdftk">Creating table of content with PDFtk</a>
+    <ul>
+      <li><a href="#1-export-meta-data-of-pdf-ebook">1. Export meta data of PDF ebook</a></li>
+      <li><a href="#2-insert-bookmark-in-meta-data-of-pdf-ebook">2. Insert bookmark in meta data of PDF ebook</a></li>
+      <li><a href="#3-import-meta-data-to-pdf-ebook">3. Import meta data to PDF Ebook</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p style="text-align: justify;">Did you ever think to create a table of content with links to a PDF ebook without a proprietary software? Here is a solution by adding a table of conetent in the form of hyperlink hierarchical bookmarks with <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/" title="PDFtk">PDFtk</a>.</p>
+
+<h2 id="installation-of--pdftk">Installation of  PDFtk</h2>
+
+<h3 id="windows">Windows</h3>
+
+<p>Downlad <a href="https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk_free-2.02-win-setup.exe" title="PDFtk Windows installer">HERE</a>, and execute a normal installation.</p>
+
+<h3 id="linux">Linux</h3>
+<ul>
+  <li>
+    <dl>
+      <dt><em>KDE Neon 5.19.4 (based on Ubuntu 20.04):</em></dt>
+      <dd>PDFtk can be installed with its dependencies in Synaptic.</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><em>Fedora 32:</em></dt>
+      <dd>PDFtk is not contained in any Fedora 32 offical repositories. Fortunately, PDFtk has been built in Fedora 30, and successfully tested in Fedora 32. We can download its rpm packages <a href="https://sandbox.mc.edu/~bennet/pdftk.html" title="PDFtk for Fedora 32">HERE</a>. Then, install by the following command-line on your local PC.</dd>
+    </dl>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">sudo dnf install [downloaded rpm path]</code></p>
+
+<p class="notice--warning"><strong>Note:</strong> There are two packages to be downloaded. The package <code class="language-plaintext highlighter-rouge">gcc6-libgcj-6.5.0-2.fc30.x86_64.rpm</code> should be firstly installed since it is the dependency of the package <code class="language-plaintext highlighter-rouge">pdftk-2.02-2.fc30.x86_64.rpm</code>.</p>
+
+<h2 id="creating-table-of-content-with-pdftk">Creating table of content with PDFtk</h2>
+
+<p>This section consists of three subsections:</p>
+<ol>
+  <li>Export meta data of PDF into a text file</li>
+  <li>Add table of content by editing the text file</li>
+  <li>Import the new meta data (saved in the text file) back to the PDF</li>
+</ol>
+
+<h3 id="1-export-meta-data-of-pdf-ebook">1. Export meta data of PDF ebook</h3>
+
+<p>Using the following command-line to export the meta data of a PDF to a text file:</p>
+
+<p><code class="language-plaintext highlighter-rouge">pdftk [pdf source] dump_data output [text file]</code></p>
+
+<p>For example, we have an ebook named <code class="language-plaintext highlighter-rouge">JavaCookBook.pdf</code>, and we want to export its meta data to <code class="language-plaintext highlighter-rouge">bookmark.txt</code> in the same directory. Therefore, we change the current directory to where the PDF file <code class="language-plaintext highlighter-rouge">JavaCookBook.pdf</code> is saved. Then, we type:</p>
+
+<p><code class="language-plaintext highlighter-rouge">pdftk ./JavaCookBook.pdf dump_data output ./bookmark.txt</code></p>
+
+<p>Here, we find the meta data of the PDF saved in <code class="language-plaintext highlighter-rouge">bookmark.txt</code></p>
+
+<h3 id="2-insert-bookmark-in-meta-data-of-pdf-ebook">2. Insert bookmark in meta data of PDF ebook</h3>
+
+<p>Open <code class="language-plaintext highlighter-rouge">bookmark.txt</code> in your favorite editor, and you might have the similar content like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>InfoBegin
+InfoKey: ModDate
+InfoValue: D:20140413195235+08'00'
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20140413112352+08'00'
+InfoBegin
+InfoKey: PXCViewerInfo
+InfoValue: PDF-XChange Viewer;2.5.210.0;Feb 25 2013;15:35:42;D:20140413195235+08'00'
+InfoBegin
+InfoKey: Creator
+InfoValue: pdfFactory Pro www.fineprint.cn
+InfoBegin
+InfoKey: Producer
+InfoValue: pdfFactory Pro 3.22 (Windows XP Professional Chinese)
+PdfID0: 9ddb8aba3cd22eb6222a807e8238fde8
+PdfID1: 9ddb8aba3cd22eb6222a807e8238fde8
+NumberOfPages: 987
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+</code></pre></div></div>
+
+<p>Add the four following tags after the tag <code class="language-plaintext highlighter-rouge">NumberOfPages:</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BookmarkBegin
+BookmarkTitle:
+BookmarkLevel:
+BookmarkPageNumber:
+</code></pre></div></div>
+
+<p>The four tags are ALL necessary for each chapter. Repeatedly append these four tags for all the chapters, and fill the values of <code class="language-plaintext highlighter-rouge">BookmarkTitle</code>, <code class="language-plaintext highlighter-rouge">BookmarkLevel</code> and <code class="language-plaintext highlighter-rouge">BookmarkPageNumber</code> as per every chapter’s infomation. Here is what I have done with the three first chapters of Java Cookbook:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BookmarkBegin
+BookmarkTitle: Chapter 1. Getting Started: Compiling, Running, and Debugging
+BookmarkLevel: 1
+BookmarkPageNumber: 22
+BookmarkBegin
+BookmarkTitle: Chapter 2. Interacting with the Environment
+BookmarkLevel: 1
+BookmarkPageNumber: 73
+BookmarkBegin
+BookmarkTitle: Chapter 3. Strings and Things
+BookmarkLevel: 1
+BookmarkPageNumber: 91
+</code></pre></div></div>
+
+<p>Once all the chapters have been done, we save the text file, and the text file is ready to be imported into the oringinal PDF file.</p>
+
+<h3 id="3-import-meta-data-to-pdf-ebook">3. Import meta data to PDF Ebook</h3>
+
+<p>Use the following command-line to import meta data that has been saved and updated in the text file back to PDF file.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pdftk [source pdf] update_info [text file] output [destination pdf]</code></p>
+
+<p>Here, we continue our example:</p>
+
+<p><code class="language-plaintext highlighter-rouge">pdftk ./JavaCookBook.pdf update_info ./bookmark.txt output ./JavaCookBookToC.pdf</code></p>
+
+<p>Voilà, We get an ebook with its clickable table of content saved in <code class="language-plaintext highlighter-rouge">JavaCookBookToc.pdf</code>!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>PDFtk only has command-line version for Linux, which is a little bit hard to use comparing to GUI version. However, Linux users are not scared of command lines. For more usage, you could type <code class="language-plaintext highlighter-rouge">pdftk --help</code>.</p>
+
+<p>Enjoy!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/website/tags/#bookmark" class="page__taxonomy-item" rel="tag">bookmark</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/website/tags/#pdftk" class="page__taxonomy-item" rel="tag">PDFtk</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/website/categories/#pdf" class="page__taxonomy-item" rel="tag">PDF</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-08-07T00:00:00-04:00">August 7, 2020</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Create+a+table+of+content+with+links+for+PDF%20https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fadd-pdf-table-of-content%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fadd-pdf-table-of-content%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fadd-pdf-table-of-content%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/cleanpages/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/website/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Chao Lin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; Minimal Mistakes Theme.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/website/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
