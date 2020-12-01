@@ -6,4 +6,8 @@ bundle exec jekyll serve
 JEKYLL_ENV=production bundler exec jekyll build
 
 ## Deploy website:
-rsync -anv --exclude={*.txt,*.yml,*.xml} _site/ /home/chao/git/website/
+Dry run:
+rsync -anv --exclude={*.txt,*.yml,*.xml,*.gemspec} _site/ /home/chao/git/website/
+
+Real run:
+rsync -anv --exclude={*.txt,*.yml,*.xml,*.gemspec} _site/ /home/chao/git/website/
