@@ -1,0 +1,431 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.3 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>JDK/JRE Installation on Linux - Clean Pages</title>
+<meta name="description" content="Manually install and manage multiple versions of JDK">
+
+
+  <meta name="author" content="Chao Lin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Clean Pages">
+<meta property="og:title" content="JDK/JRE Installation on Linux">
+<meta property="og:url" content="https://cleanpages.github.io/website/java/add-pdf-table-of-content/">
+
+
+  <meta property="og:description" content="Manually install and manage multiple versions of JDK">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-12-01T00:00:00-05:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://cleanpages.github.io/website/java/add-pdf-table-of-content/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Chao Lin",
+      "url": "https://cleanpages.github.io/website/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/website/feed.xml" type="application/atom+xml" rel="alternate" title="Clean Pages Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/website/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/website/">
+          Clean Pages
+          <span class="site-subtitle">Clean Coding Or Die</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/website/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/website/about/">About Me</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="JDK/JRE Installation on Linux">
+    <meta itemprop="description" content="Manually install and manage multiple versions of JDK">
+    <meta itemprop="datePublished" content="2020-12-01T00:00:00-05:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">JDK/JRE Installation on Linux
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p style="text-align: justify;">JDK installation and management are easy and clear in Linux with help of the software tools integrated in Linux, which are <code class="language-plaintext highlighter-rouge">tar</code> and <code class="language-plaintext highlighter-rouge">update-alternatives</code>. This article consists of download, installation, and management of multiple versions of JDK.</p>
+
+<h3 id="download-jdk">Download JDK:</h3>
+<p>The easiest way to install JDK in Debian based linux distro is by using <code class="language-plaintext highlighter-rouge">apt install</code> command:<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install openjdk-8
+</code></pre></div></div>
+<p style="text-align: justify;">However, this command might not allow you installing the latest JDK that has been released on Oracle website. At the time of writing this article, JDK-15 has been released, but in Debian/Ubuntu official repository, JDK-14 is the latest version.
+If you want to use the latest version of JDK. You have to download JDK package from Oracle website. For example, we download JDK-15 and install it later.</p>
+<p><a href="https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox" title="jdk-15.0.1_linux-x64_bin.tar.gz">jdk-15.0.1_linux-x64_bin.tar.gz</a>.</p>
+<h3 id="install-jdk">Install JDK:</h3>
+<p>Installation is done by extracting the downloaded <code class="language-plaintext highlighter-rouge">tar</code> package into the directory <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code>. If this directory does not exist, you could create it by using the command <code class="language-plaintext highlighter-rouge">mkdir</code>, then change to <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> by using <code class="language-plaintext highlighter-rouge">cd</code> command. Extract the <code class="language-plaintext highlighter-rouge">tar</code> package by the following command with <code class="language-plaintext highlighter-rouge">sudo</code> privilege:<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo tar -xvf jdk-15.0.1_linux-x64_bin.tar.gz
+</code></pre></div></div>
+
+<p class="notice--warning"><strong>Note:</strong> You are allowed extracting JDK in whatever directory you want. However, you have to tell the operating system which version of JDK is currently using. Next help can help to do this.</p>
+
+<h3 id="set-currentdefault-version">Set current/default version:</h3>
+<ul>
+  <li>Set JRE, <code class="language-plaintext highlighter-rouge">java</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-15/bin/java" 1
+</code></pre></div>    </div>
+  </li>
+  <li>Set Java compiler, <code class="language-plaintext highlighter-rouge">javac</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk-15/bin/javac" 1
+</code></pre></div>    </div>
+  </li>
+  <li>Set Java Web Start <code class="language-plaintext highlighter-rouge">javaws</code>:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk-15/bin/javaws" 1
+</code></pre></div>    </div>
+    <p>In the above three command lines, you could replace <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> by the directory where you have extracted JDK.</p>
+  </li>
+</ul>
+
+<h3 id="verification-installation-and-settings">Verification installation and settings</h3>
+<p>We verify JRE by the command:<br />
+<code class="language-plaintext highlighter-rouge">java --version</code><br />
+We get the following output, in which JRE version is to java 15</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java 15 2020-09-15
+Java(TM) SE Runtime Environment (build 15+36-1562)
+Java HotSpot(TM) 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
+</code></pre></div></div>
+<p>By the same way, we also verify Java compiler version:<br />
+<code class="language-plaintext highlighter-rouge">javac --version</code><br />
+The output shows javac 15</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javac 15
+</code></pre></div></div>
+<h3 id="conclusion">Conclusion</h3>
+<p style="text-align: justify;"><code class="language-plaintext highlighter-rouge">upadtes-alternatives</code> really helps to easily manage JDK versions without setting path in command line or editing bash script. We could also have different versions of JRE and compiler, like Java compiler 8 with JRE 15 for example. However, the version of compiler should be always lower than JRE.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/website/tags/#jdk" class="page__taxonomy-item" rel="tag">JDK</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/website/tags/#jre" class="page__taxonomy-item" rel="tag">JRE</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/website/tags/#jre" class="page__taxonomy-item" rel="tag">JRE</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/website/categories/#java" class="page__taxonomy-item" rel="tag">JAVA</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-12-01T00:00:00-05:00">December 1, 2020</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=JDK%2FJRE+Installation+on+Linux%20https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fjava%2Fadd-pdf-table-of-content%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fjava%2Fadd-pdf-table-of-content%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fjava%2Fadd-pdf-table-of-content%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/website/pdf/add-pdf-table-of-content/" class="pagination--pager" title="Create a table of content with links for PDF
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/website/pdf/add-pdf-table-of-content/" rel="permalink">Create a table of content with links for PDF
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Create clickable table of content for PDF without prorietary software
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/cleanpages/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/website/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Chao Lin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; Minimal Mistakes Theme.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/website/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+  <script>
+  window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+  ga('create','UA-171400018-1','auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send','pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

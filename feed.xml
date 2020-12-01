@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://cleanpages.github.io/website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cleanpages.github.io/website/" rel="alternate" type="text/html" /><updated>2020-11-29T14:00:06-05:00</updated><id>https://cleanpages.github.io/website/feed.xml</id><title type="html">Clean Pages</title><subtitle>A personal coding note.</subtitle><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><entry><title type="html">Create a table of content with links for PDF</title><link href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/" rel="alternate" type="text/html" title="Create a table of content with links for PDF" /><published>2020-08-07T00:00:00-04:00</published><updated>2020-08-07T00:00:00-04:00</updated><id>https://cleanpages.github.io/website/pdf/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;Did you ever think to create a table of content with links to a PDF ebook without a proprietary software? Here is a solution by adding a table of conetent in the form of hyperlink hierarchical bookmarks with &lt;a href=&quot;https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/&quot; title=&quot;PDFtk&quot;&gt;PDFtk&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://cleanpages.github.io/website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cleanpages.github.io/website/" rel="alternate" type="text/html" /><updated>2020-12-01T17:06:09-05:00</updated><id>https://cleanpages.github.io/website/feed.xml</id><title type="html">Clean Pages</title><subtitle>A personal IT programming website.</subtitle><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><entry><title type="html">JDK/JRE Installation on Linux</title><link href="https://cleanpages.github.io/website/java/add-pdf-table-of-content/" rel="alternate" type="text/html" title="JDK/JRE Installation on Linux" /><published>2020-12-01T00:00:00-05:00</published><updated>2020-12-01T00:00:00-05:00</updated><id>https://cleanpages.github.io/website/java/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/java/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;JDK installation and management are easy and clear in Linux with help of the software tools integrated in Linux, which are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt;. This article consists of download, installation, and management of multiple versions of JDK.&lt;/p&gt;
+
+&lt;h3 id=&quot;download-jdk&quot;&gt;Download JDK:&lt;/h3&gt;
+&lt;p&gt;The easiest way to install JDK in Debian based linux distro is by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install&lt;/code&gt; command:&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt install openjdk-8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;However, this command might not allow you installing the latest JDK that has been released on Oracle website. At the time of writing this article, JDK-15 has been released, but in Debian/Ubuntu official repository, JDK-14 is the latest version.
+If you want to use the latest version of JDK. You have to download JDK package from Oracle website. For example, we download JDK-15 and install it later.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox&quot; title=&quot;jdk-15.0.1_linux-x64_bin.tar.gz&quot;&gt;jdk-15.0.1_linux-x64_bin.tar.gz&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;install-jdk&quot;&gt;Install JDK:&lt;/h3&gt;
+&lt;p&gt;Installation is done by extracting the downloaded &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package into the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt;. If this directory does not exist, you could create it by using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir&lt;/code&gt;, then change to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt; command. Extract the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package by the following command with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; privilege:&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo tar -xvf jdk-15.0.1_linux-x64_bin.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You are allowed extracting JDK in whatever directory you want. However, you have to tell the operating system which version of JDK is currently using. Next help can help to do this.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-currentdefault-version&quot;&gt;Set current/default version:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Set JRE, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-alternatives --install &quot;/usr/bin/java&quot; &quot;java&quot; &quot;/usr/lib/jvm/jdk-15/bin/java&quot; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Set Java compiler, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javac&lt;/code&gt;:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-alternatives --install &quot;/usr/bin/javac&quot; &quot;javac&quot; &quot;/usr/lib/jvm/jdk-15/bin/javac&quot; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Set Java Web Start &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javaws&lt;/code&gt;:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-alternatives --install &quot;/usr/bin/javaws&quot; &quot;javaws&quot; &quot;/usr/lib/jvm/jdk-15/bin/javaws&quot; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;In the above three command lines, you could replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; by the directory where you have extracted JDK.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;verification-installation-and-settings&quot;&gt;Verification installation and settings&lt;/h3&gt;
+&lt;p&gt;We verify JRE by the command:&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java --version&lt;/code&gt;&lt;br /&gt;
+We get the following output, in which JRE version is to java 15&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java 15 2020-09-15
+Java(TM) SE Runtime Environment (build 15+36-1562)
+Java HotSpot(TM) 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;By the same way, we also verify Java compiler version:&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javac --version&lt;/code&gt;&lt;br /&gt;
+The output shows javac 15&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javac 15
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upadtes-alternatives&lt;/code&gt; really helps to easily manage JDK versions without setting path in command line or editing bash script. We could also have different versions of JRE and compiler, like Java compiler 8 with JRE 15 for example. However, the version of compiler should be always lower than JRE.&lt;/p&gt;</content><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><category term="JAVA" /><category term="JDK" /><category term="JRE" /><category term="JRE" /><summary type="html">Manually install and manage multiple versions of JDK</summary></entry><entry><title type="html">Create a table of content with links for PDF</title><link href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/" rel="alternate" type="text/html" title="Create a table of content with links for PDF" /><published>2020-08-07T00:00:00-04:00</published><updated>2020-08-07T00:00:00-04:00</updated><id>https://cleanpages.github.io/website/pdf/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;Did you ever think to create a table of content with links to a PDF ebook without a proprietary software? Here is a solution by adding a table of conetent in the form of hyperlink hierarchical bookmarks with &lt;a href=&quot;https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/&quot; title=&quot;PDFtk&quot;&gt;PDFtk&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;installation-of--pdftk&quot;&gt;Installation of  PDFtk&lt;/h2&gt;
 

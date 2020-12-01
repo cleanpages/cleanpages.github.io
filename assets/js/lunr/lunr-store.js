@@ -4,4 +4,10 @@ var store = [{
         "tags": ["PDFtk","bookmark"],
         "url": "https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/",
         "teaser": null
+      },{
+        "title": "JDK/JRE Installation on Linux",
+        "excerpt":"JDK installation and management are easy and clear in Linux with help of the software tools integrated in Linux, which are tar and update-alternatives. This article consists of download, installation, and management of multiple versions of JDK. Download JDK: The easiest way to install JDK in Debian based linux distro...","categories": ["JAVA"],
+        "tags": ["JDK","JRE","JRE"],
+        "url": "https://cleanpages.github.io/website/java/add-pdf-table-of-content/",
+        "teaser": null
       }]
