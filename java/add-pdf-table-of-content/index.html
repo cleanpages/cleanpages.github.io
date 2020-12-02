@@ -189,13 +189,13 @@
 </code></pre></div></div>
 <p style="text-align: justify;">However, this command might not allow you installing the latest JDK that has been released on Oracle website. At the time of writing this article, JDK-15 has been released, but in Debian/Ubuntu official repository, JDK-14 is the latest version.
 If you want to use the latest version of JDK. You have to download JDK package from Oracle website. For example, we download JDK-15 and install it later.</p>
-<p><a href="https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox" title="jdk-15.0.1_linux-x64_bin.tar.gz">jdk-15.0.1_linux-x64_bin.tar.gz</a>.</p>
+<p><a href="https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox" title="jdk-15.0.1_linux-x64_bin.tar.gz">jdk-15.0.1_linux-x64_bin.tar.gz</a></p>
 <h3 id="install-jdk">Install JDK:</h3>
-<p>Installation is done by extracting the downloaded <code class="language-plaintext highlighter-rouge">tar</code> package into the directory <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code>. If this directory does not exist, you could create it by using the command <code class="language-plaintext highlighter-rouge">mkdir</code>, then change to <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> by using <code class="language-plaintext highlighter-rouge">cd</code> command. Extract the <code class="language-plaintext highlighter-rouge">tar</code> package by the following command with <code class="language-plaintext highlighter-rouge">sudo</code> privilege:<br /></p>
+<p>Installation is done by extracting the downloaded <code class="language-plaintext highlighter-rouge">tar</code> package into the directory <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code>. If this directory does not exist, you could create it by using the command <code class="language-plaintext highlighter-rouge">mkdir</code>, then change to <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> and extract the <code class="language-plaintext highlighter-rouge">tar</code> package by the following command with <code class="language-plaintext highlighter-rouge">sudo</code> privilege:</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo tar -xvf jdk-15.0.1_linux-x64_bin.tar.gz
 </code></pre></div></div>
 
-<p class="notice--warning"><strong>Note:</strong> You are allowed extracting JDK in whatever directory you want. However, you have to tell the operating system which version of JDK is currently using. Next help can help to do this.</p>
+<p class="notice--warning"><strong>Note:</strong> You are allowed extracting JDK in whatever directory you want. However, you have to tell operating system which version of JDK is currently using. Next steps can help doing this.</p>
 
 <h3 id="set-currentdefault-version">Set current/default version:</h3>
 <ul>
@@ -206,18 +206,14 @@ If you want to use the latest version of JDK. You have to download JDK package f
   <li>Set Java compiler, <code class="language-plaintext highlighter-rouge">javac</code>:
     <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk-15/bin/javac" 1
 </code></pre></div>    </div>
-  </li>
-  <li>Set Java Web Start <code class="language-plaintext highlighter-rouge">javaws</code>:
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk-15/bin/javaws" 1
-</code></pre></div>    </div>
-    <p>In the above three command lines, you could replace <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> by the directory where you have extracted JDK.</p>
+    <p>In the above two command lines, you could replace <code class="language-plaintext highlighter-rouge">/usr/lib/jvm/jdk-15</code> by the directory where you have extracted JDK.</p>
   </li>
 </ul>
 
-<h3 id="verification-installation-and-settings">Verification installation and settings</h3>
+<h3 id="verify-the-installation">Verify the installation</h3>
 <p>We verify JRE by the command:<br />
 <code class="language-plaintext highlighter-rouge">java --version</code><br />
-We get the following output, in which JRE version is to java 15</p>
+We get the following output, in which JRE version is set to java 15</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java 15 2020-09-15
 Java(TM) SE Runtime Environment (build 15+36-1562)
 Java HotSpot(TM) 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
@@ -228,7 +224,7 @@ The output shows javac 15</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>javac 15
 </code></pre></div></div>
 <h3 id="conclusion">Conclusion</h3>
-<p style="text-align: justify;"><code class="language-plaintext highlighter-rouge">upadtes-alternatives</code> really helps to easily manage JDK versions without setting path in command line or editing bash script. We could also have different versions of JRE and compiler, like Java compiler 8 with JRE 15 for example. However, the version of compiler should be always lower than JRE.</p>
+<p style="text-align: justify;"><code class="language-plaintext highlighter-rouge">upadtes-alternatives</code> really helps to simplify JDK installation and the management of JDK versions without setting path in command line or editing bash scripts. We could also have different versions of JRE and Java compiler (javac). For example, we can use Java 8 compiler combined with JRE 15. However, the version of compiler should be always lower than the version of JRE.</p>
 
         
       </section>
@@ -344,7 +340,7 @@ The output shows javac 15</p>
 
 
 
-  2 minute read
+  3 minute read
 
 </p>
     
