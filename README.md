@@ -7,7 +7,8 @@ JEKYLL_ENV=production bundler exec jekyll build
 
 ## Deploy website:
 ### Dry run
-with Archive, Verbose, Update, Checksum, Ignore directory timestamp, and sync exclude pattern:
+Archive, Verbose, Update, Checksum, Ignore directory timestamp, and sync exclude pattern:
+
 rsync -avucn --omit-dir-times --exclude={*.txt,*.yml,*.xml,*.gemspec} _site/ /home/chao/git/website/
 
 ### Real run:
