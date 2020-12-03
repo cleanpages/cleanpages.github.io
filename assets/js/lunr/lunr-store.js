@@ -10,4 +10,10 @@ var store = [{
         "tags": ["JDK","JRE","JRE"],
         "url": "https://cleanpages.github.io/website/java/install-jdk/",
         "teaser": null
+      },{
+        "title": "More PDF usage of pdftk",
+        "excerpt":"Here is more usage of pdftk. Note: If you want to know how to install pdftk in Linux, please refer to Create a table of content with links for PDF Merge multiple PDF files to one PDF files: Change into the directory where the PDF files are, then type: pdftk...","categories": ["PDF"],
+        "tags": ["PDFtk"],
+        "url": "https://cleanpages.github.io/website/pdf/pdftk-more-usage/",
+        "teaser": null
       }]
