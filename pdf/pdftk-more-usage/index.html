@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>More PDF usage of pdftk - Clean Pages</title>
-<meta name="description" content="merge, split and more…">
+<!-- begin _includes/seo.html --><title>More usage of pdftk - Clean Pages</title>
+<meta name="description" content="merge, split, decrypt PDF and more…">
 
 
   <meta name="author" content="Chao Lin">
@@ -19,11 +19,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Clean Pages">
-<meta property="og:title" content="More PDF usage of pdftk">
+<meta property="og:title" content="More usage of pdftk">
 <meta property="og:url" content="https://cleanpages.github.io/website/pdf/pdftk-more-usage/">
 
 
-  <meta property="og:description" content="merge, split and more…">
+  <meta property="og:description" content="merge, split, decrypt PDF and more…">
 
 
 
@@ -156,15 +156,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="More PDF usage of pdftk">
-    <meta itemprop="description" content="merge, split and more…">
+    <meta itemprop="headline" content="More usage of pdftk">
+    <meta itemprop="description" content="merge, split, decrypt PDF and more…">
     <meta itemprop="datePublished" content="2020-12-02T00:00:00-05:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">More PDF usage of pdftk
+          <h1 id="page-title" class="page__title" itemprop="headline">More usage of pdftk
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -181,21 +181,41 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Here is more usage of pdftk.</p>
+        <p>Here is more usage of pdftk. This post keeps being updated…</p>
 
 <p class="notice--warning"><strong>Note</strong>: If you want to know how to install pdftk in Linux, please refer to
 <a href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">Create a table of content with links for PDF</a></p>
 
-<h3 id="merge-multiple-pdf-files-to-one-pdf-files">Merge multiple PDF files to one PDF files:</h3>
-<p>Change into the directory where the PDF files are, then type:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk *.pdf cat output bind.pdf
-</code></pre></div></div>
-<h3 id="split-pdf-by-">Split PDF by …</h3>
+<h3 id="merge-multiple-pdf-files-to-one-pdf-files">Merge multiple PDF files to one PDF files</h3>
+<ul>
+  <li>Change into the directory where the PDF files are waiting to merge, then type:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk *.pdf cat output bind.pdf
+</code></pre></div>    </div>
+  </li>
+  <li>Merge PDFs with a specified order:
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk A=file1.pdf B=file2.pdf cat A B output bind12.pdf
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-<h3 id="open-protected-pdf-with-preset-password">Open protected PDF with preset password</h3>
+<h3 id="split-pdf-pages-into-single-page-pdfs">Split PDF pages into single page PDFs</h3>
+<p>The following command splits <code class="language-plaintext highlighter-rouge">bind.pdf</code> into single page PDFs as <code class="language-plaintext highlighter-rouge">page01.pdf</code>, <code class="language-plaintext highlighter-rouge">page02.pdf</code>, <code class="language-plaintext highlighter-rouge">page03.pdf</code>…</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk bind.pdf burst output ./pdfs/page%2d.pdf
+</code></pre></div></div>
+<p>if the <code class="language-plaintext highlighter-rouge">output</code> section is omitted, the single page PDFs will generated in the current directory.</p>
+
+<h3 id="delete-pages-in-a-pdf-file">Delete pages in a PDF file</h3>
+<p>For example, Remove page 9 from file.pdf, and save in new.pdf:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk A=file.pdf cat A1-8 A10-end output new.pdf
+</code></pre></div></div>
+<h3 id="set-a-password-to-protect-pdf">Set a password to protect PDF</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk file.pdf output protected.pdf owner_pw &lt;password&gt;
+</code></pre></div></div>
+
+<h3 id="open-a-protected-pdf-with-its-preset-password">Open a protected PDF with its preset password</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pdftk file.pdf input-pw &lt;password&gt; output unsecure.pdf
 </code></pre></div></div>
-<p class="notice--warning"><strong>Note</strong>: This command seems not functional with the PDF that is encrypted by the latest Adobe Acrobat since pdftk is not officially maintained any more.</p>
+<p class="notice--warning"><strong>Note</strong>: This command seems not functional with the PDF that is encrypted by Adobe Acrobat.</p>
 
 
         
@@ -255,7 +275,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=More+PDF+usage+of+pdftk%20https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fpdftk-more-usage%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=More+usage+of+pdftk%20https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fpdftk-more-usage%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcleanpages.github.io%2Fwebsite%2Fpdf%2Fpdftk-more-usage%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -333,7 +353,7 @@
 
 
 
-  2 minute read
+  3 minute read
 
 </p>
     
