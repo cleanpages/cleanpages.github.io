@@ -16,4 +16,10 @@ var store = [{
         "tags": ["PDFtk"],
         "url": "https://cleanpages.github.io/website/pdf/pdftk-more-usage/",
         "teaser": null
+      },{
+        "title": "Make a new hard drive using ext4 file system",
+        "excerpt":"This article is applicable to external (mainly USB) storage device as well as internal storage device. Please note that all disk operation in Linux requires super user privileges. Find the new hard drive The command lsblk will list all detected hard drives. NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda...","categories": ["Linux"],
+        "tags": ["Partition","File System","Format","Disk"],
+        "url": "https://cleanpages.github.io/website/linux/external-hdd-ext4/",
+        "teaser": null
       }]

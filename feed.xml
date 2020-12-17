@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://cleanpages.github.io/website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cleanpages.github.io/website/" rel="alternate" type="text/html" /><updated>2020-12-01T17:06:09-05:00</updated><id>https://cleanpages.github.io/website/feed.xml</id><title type="html">Clean Pages</title><subtitle>A personal IT programming website.</subtitle><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><entry><title type="html">JDK/JRE Installation on Linux</title><link href="https://cleanpages.github.io/website/java/add-pdf-table-of-content/" rel="alternate" type="text/html" title="JDK/JRE Installation on Linux" /><published>2020-12-01T00:00:00-05:00</published><updated>2020-12-01T00:00:00-05:00</updated><id>https://cleanpages.github.io/website/java/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/java/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;JDK installation and management are easy and clear in Linux with help of the software tools integrated in Linux, which are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt;. This article consists of download, installation, and management of multiple versions of JDK.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://cleanpages.github.io/website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cleanpages.github.io/website/" rel="alternate" type="text/html" /><updated>2020-12-16T23:15:29-05:00</updated><id>https://cleanpages.github.io/website/feed.xml</id><title type="html">Clean Pages</title><subtitle>A personal IT programming website.</subtitle><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><entry><title type="html">Make a new hard drive using ext4 file system</title><link href="https://cleanpages.github.io/website/linux/external-hdd-ext4/" rel="alternate" type="text/html" title="Make a new hard drive using ext4 file system" /><published>2020-12-16T00:00:00-05:00</published><updated>2020-12-16T00:00:00-05:00</updated><id>https://cleanpages.github.io/website/linux/external-hdd-ext4</id><content type="html" xml:base="https://cleanpages.github.io/website/linux/external-hdd-ext4/">&lt;p style=&quot;text-align: justify;&quot;&gt;This article is applicable to external (mainly USB) storage device as well as internal storage device. Please note that all disk operation in Linux requires super user privileges.&lt;/p&gt;
+
+&lt;h3 id=&quot;find-the-new-hard-drive&quot;&gt;Find the new hard drive&lt;/h3&gt;
+&lt;p&gt;The command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt; will list all detected hard drives.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 223.6G  0 disk 
+├─sda1   8:1    0   100M  0 part /boot/efi
+├─sda2   8:2    0  1000M  0 part [SWAP]
+├─sda3   8:3    0 178.6G  0 part /home
+└─sda4   8:4    0    44G  0 part /
+sdb      8:16   0 931.5G  0 disk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;A device name refers to the entire hard disk. In the above output, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sda&lt;/code&gt; refers to the first hard disk and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb&lt;/code&gt; is the second one. The numbers following to device name refers to the partitions on that hard disk. In this example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb&lt;/code&gt; is the new hard disk. We also see &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb&lt;/code&gt; is not yet partitioned since there is no partition number suffixing to the device name.&lt;/p&gt;
+
+&lt;h3 id=&quot;partition-the-new-hard-drive&quot;&gt;Partition the new hard drive&lt;/h3&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;Both of the following two commands perfectly partition hard disk. They have user friendly indications and are very easy to use.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo fdisk /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo cfdisk /dev/sdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;If you are not familiar with command line, the famous GUI partition application named “KDE Partition Manager” would be better. In this example, we suppose having created only one partition on the new hard disk - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb1&lt;/code&gt;. We have the output of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lsblk&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 223.6G  0 disk 
+├─sda1   8:1    0   100M  0 part /boot/efi
+├─sda2   8:2    0  1000M  0 part [SWAP]
+├─sda3   8:3    0 178.6G  0 part /home
+└─sda4   8:4    0    44G  0 part /
+sdb      8:16   0 931.5G  0 disk 
+└─sdb1   8:17   0 931.5G  0 part
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;format-the-partitioned-hard-drive&quot;&gt;Format the partitioned hard drive&lt;/h3&gt;
+&lt;p&gt;The following command formats the new hard drive using ext4 file system:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkfs.ext4 /dev/sdb1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p class=&quot;notice--warning&quot; style=&quot;text-align: justify;&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; We format the first partition of the hard disk &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb&lt;/code&gt; which is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb1&lt;/code&gt; (not &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdb&lt;/code&gt;, the hard disk) using ext4 file system.&lt;/p&gt;
+
+&lt;h3 id=&quot;mount-the-new-hard-disk&quot;&gt;Mount the new hard disk&lt;/h3&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;For the most GUI Linux distros, if you have partitioned and formatted an USB drive, you could pull it out, then plug it in again. It would automatically mount the USB drive under the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/media/[username]/&lt;/code&gt;. Then, you need to set its directory (mount point) accessible to every user, by the following command:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod 0777 /media/[username]/[mount directory]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;If not, you would not be able to copy any files on your USB drive. Because that your hard disk mount point only grants the access to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; user who created it.&lt;/p&gt;
+
+&lt;p style=&quot;text-align: justify;&quot;&gt;If your Linux distro does not automatically mount any drives, you need to do it manually by using the following command:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo mount /dev/sdb1 /[mount directory]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Normally, the hard disk is mounted under the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/mnt&lt;/code&gt;, you could create your own directory under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/mnt&lt;/code&gt; before mounting the hard disk. For example, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo mkdir /mnt/driveb&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;update-etcfstab-file&quot;&gt;Update /etc/fstab file&lt;/h3&gt;
+&lt;p&gt;If you install the new hard disk as an internal hard disk (inside computer case), and want it to be mounted every time you reboot Linux, You must add your hard disk in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fstab&lt;/code&gt; file. Here, we use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vim&lt;/code&gt; to edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fstab&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;append as follows:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;UUID=[new disk UUID]   /dev/sdb1   /mnt/driveb   ext4   defaults   1   2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Disk’s UUID value can be obtained by the command:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;blkid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;label-the-partition&quot;&gt;Label the partition&lt;/h3&gt;
+&lt;p&gt;We can label the partition using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l2label&lt;/code&gt; command. For example, if you want to label the new partition &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/driveb&lt;/code&gt;, enter:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;e2label /dev/sdb1 /driveb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We can use disk label instead of its devie name + partition number in the previous step updating &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fstab&lt;/code&gt; file to mount the new partition.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;UUID=[new disk UUID]   LABEL=/driveb   /mnt/driveb   ext4   defaults   1   2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Disk label is very practical for USB external drives, if you give them significant names.&lt;/p&gt;</content><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><category term="Linux" /><category term="Partition" /><category term="File System" /><category term="Format" /><category term="Disk" /><summary type="html">Partition/Format external and internal hard disk using ext4 file system</summary></entry><entry><title type="html">More usage of pdftk</title><link href="https://cleanpages.github.io/website/pdf/pdftk-more-usage/" rel="alternate" type="text/html" title="More usage of pdftk" /><published>2020-12-02T00:00:00-05:00</published><updated>2020-12-02T00:00:00-05:00</updated><id>https://cleanpages.github.io/website/pdf/pdftk-more-usage</id><content type="html" xml:base="https://cleanpages.github.io/website/pdf/pdftk-more-usage/">&lt;p&gt;Here is more usage of pdftk. This post keeps being updated…&lt;/p&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note&lt;/strong&gt;: If you want to know how to install pdftk in Linux, please refer to
+&lt;a href=&quot;https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/&quot;&gt;Create a table of content with links for PDF&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;merge-multiple-pdf-files-to-one-pdf-files&quot;&gt;Merge multiple PDF files to one PDF files&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Change into the directory where the PDF files are waiting to merge, then type:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk *.pdf cat output bind.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Merge PDFs with a specified order:
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk A=file1.pdf B=file2.pdf cat A B output bind12.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;split-pdf-pages-into-single-page-pdfs&quot;&gt;Split PDF pages into single page PDFs&lt;/h3&gt;
+&lt;p&gt;The following command splits &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bind.pdf&lt;/code&gt; into single page PDFs as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page01.pdf&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page02.pdf&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page03.pdf&lt;/code&gt;…&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk bind.pdf burst output ./pdfs/page%2d.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;if the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;output&lt;/code&gt; section is omitted, the single page PDFs will generated in the current directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete-pages-in-a-pdf-file&quot;&gt;Delete pages in a PDF file&lt;/h3&gt;
+&lt;p&gt;For example, Remove page 9 from file.pdf, and save in new.pdf:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk A=file.pdf cat A1-8 A10-end output new.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;set-a-password-to-protect-pdf&quot;&gt;Set a password to protect PDF&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk file.pdf output protected.pdf owner_pw &amp;lt;password&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;open-a-protected-pdf-with-its-preset-password&quot;&gt;Open a protected PDF with its preset password&lt;/h3&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pdftk file.pdf input-pw &amp;lt;password&amp;gt; output unsecure.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note&lt;/strong&gt;: This command seems not functional with the PDF that is encrypted by Adobe Acrobat.&lt;/p&gt;</content><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><category term="PDF" /><category term="PDFtk" /><summary type="html">merge, split, decrypt PDF and more...</summary></entry><entry><title type="html">JDK/JRE Installation on Linux</title><link href="https://cleanpages.github.io/website/java/install-jdk/" rel="alternate" type="text/html" title="JDK/JRE Installation on Linux" /><published>2020-12-01T00:00:00-05:00</published><updated>2020-12-01T00:00:00-05:00</updated><id>https://cleanpages.github.io/website/java/install-jdk</id><content type="html" xml:base="https://cleanpages.github.io/website/java/install-jdk/">&lt;p style=&quot;text-align: justify;&quot;&gt;JDK installation and management are easy and clear in Linux with help of the software tools integrated in Linux, which are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt;. This article consists of download, installation, and management of multiple versions of JDK.&lt;/p&gt;
 
 &lt;h3 id=&quot;download-jdk&quot;&gt;Download JDK:&lt;/h3&gt;
 &lt;p&gt;The easiest way to install JDK in Debian based linux distro is by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt install&lt;/code&gt; command:&lt;br /&gt;&lt;/p&gt;
@@ -6,13 +104,13 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p style=&quot;text-align: justify;&quot;&gt;However, this command might not allow you installing the latest JDK that has been released on Oracle website. At the time of writing this article, JDK-15 has been released, but in Debian/Ubuntu official repository, JDK-14 is the latest version.
 If you want to use the latest version of JDK. You have to download JDK package from Oracle website. For example, we download JDK-15 and install it later.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox&quot; title=&quot;jdk-15.0.1_linux-x64_bin.tar.gz&quot;&gt;jdk-15.0.1_linux-x64_bin.tar.gz&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.oracle.com/ca-en/java/technologies/javase-jdk15-downloads.html#license-lightbox&quot; title=&quot;jdk-15.0.1_linux-x64_bin.tar.gz&quot;&gt;jdk-15.0.1_linux-x64_bin.tar.gz&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;install-jdk&quot;&gt;Install JDK:&lt;/h3&gt;
-&lt;p&gt;Installation is done by extracting the downloaded &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package into the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt;. If this directory does not exist, you could create it by using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir&lt;/code&gt;, then change to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; by using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt; command. Extract the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package by the following command with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; privilege:&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Installation is done by extracting the downloaded &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package into the directory &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt;. If this directory does not exist, you could create it by using the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir&lt;/code&gt;, then change to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; and extract the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tar&lt;/code&gt; package by the following command with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo&lt;/code&gt; privilege:&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo tar -xvf jdk-15.0.1_linux-x64_bin.tar.gz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You are allowed extracting JDK in whatever directory you want. However, you have to tell the operating system which version of JDK is currently using. Next help can help to do this.&lt;/p&gt;
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; You are allowed extracting JDK in whatever directory you want. However, you have to tell operating system which version of JDK is currently using. Next steps can help doing this.&lt;/p&gt;
 
 &lt;h3 id=&quot;set-currentdefault-version&quot;&gt;Set current/default version:&lt;/h3&gt;
 &lt;ul&gt;
@@ -23,18 +121,14 @@ If you want to use the latest version of JDK. You have to download JDK package f
   &lt;li&gt;Set Java compiler, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javac&lt;/code&gt;:
     &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-alternatives --install &quot;/usr/bin/javac&quot; &quot;javac&quot; &quot;/usr/lib/jvm/jdk-15/bin/javac&quot; 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Set Java Web Start &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javaws&lt;/code&gt;:
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo update-alternatives --install &quot;/usr/bin/javaws&quot; &quot;javaws&quot; &quot;/usr/lib/jvm/jdk-15/bin/javaws&quot; 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;In the above three command lines, you could replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; by the directory where you have extracted JDK.&lt;/p&gt;
+    &lt;p&gt;In the above two command lines, you could replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/lib/jvm/jdk-15&lt;/code&gt; by the directory where you have extracted JDK.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;verification-installation-and-settings&quot;&gt;Verification installation and settings&lt;/h3&gt;
+&lt;h3 id=&quot;verify-the-installation&quot;&gt;Verify the installation&lt;/h3&gt;
 &lt;p&gt;We verify JRE by the command:&lt;br /&gt;
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java --version&lt;/code&gt;&lt;br /&gt;
-We get the following output, in which JRE version is to java 15&lt;/p&gt;
+We get the following output, in which JRE version is set to java 15&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java 15 2020-09-15
 Java(TM) SE Runtime Environment (build 15+36-1562)
 Java HotSpot(TM) 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
@@ -45,7 +139,7 @@ The output shows javac 15&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javac 15
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upadtes-alternatives&lt;/code&gt; really helps to easily manage JDK versions without setting path in command line or editing bash script. We could also have different versions of JRE and compiler, like Java compiler 8 with JRE 15 for example. However, the version of compiler should be always lower than JRE.&lt;/p&gt;</content><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><category term="JAVA" /><category term="JDK" /><category term="JRE" /><category term="JRE" /><summary type="html">Manually install and manage multiple versions of JDK</summary></entry><entry><title type="html">Create a table of content with links for PDF</title><link href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/" rel="alternate" type="text/html" title="Create a table of content with links for PDF" /><published>2020-08-07T00:00:00-04:00</published><updated>2020-08-07T00:00:00-04:00</updated><id>https://cleanpages.github.io/website/pdf/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;Did you ever think to create a table of content with links to a PDF ebook without a proprietary software? Here is a solution by adding a table of conetent in the form of hyperlink hierarchical bookmarks with &lt;a href=&quot;https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/&quot; title=&quot;PDFtk&quot;&gt;PDFtk&lt;/a&gt;.&lt;/p&gt;
+&lt;p style=&quot;text-align: justify;&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upadtes-alternatives&lt;/code&gt; really helps to simplify JDK installation and the management of JDK versions without setting path in command line or editing bash scripts. We could also have different versions of JRE and Java compiler (javac). For example, we can use Java 8 compiler combined with JRE 15. However, the version of compiler should be always lower than the version of JRE.&lt;/p&gt;</content><author><name>Chao Lin</name><email>clinmazda at gmail.com</email></author><category term="JAVA" /><category term="JDK" /><category term="JRE" /><category term="JRE" /><summary type="html">Manually install and manage multiple versions of JDK</summary></entry><entry><title type="html">Create a table of content with links for PDF</title><link href="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/" rel="alternate" type="text/html" title="Create a table of content with links for PDF" /><published>2020-08-07T00:00:00-04:00</published><updated>2020-08-07T00:00:00-04:00</updated><id>https://cleanpages.github.io/website/pdf/add-pdf-table-of-content</id><content type="html" xml:base="https://cleanpages.github.io/website/pdf/add-pdf-table-of-content/">&lt;p style=&quot;text-align: justify;&quot;&gt;Did you ever think to create a table of content with links to a PDF ebook without a proprietary software? Here is a solution by adding a table of conetent in the form of hyperlink hierarchical bookmarks with &lt;a href=&quot;https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/&quot; title=&quot;PDFtk&quot;&gt;PDFtk&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;installation-of--pdftk&quot;&gt;Installation of  PDFtk&lt;/h2&gt;
 
@@ -58,18 +152,22 @@ The output shows javac 15&lt;/p&gt;
   &lt;li&gt;
     &lt;dl&gt;
       &lt;dt&gt;&lt;em&gt;KDE Neon 5.19.4 (based on Ubuntu 20.04):&lt;/em&gt;&lt;/dt&gt;
-      &lt;dd&gt;PDFtk can be installed with its dependencies in Synaptic.&lt;/dd&gt;
+      &lt;dd&gt;PDFtk can be installed with its dependencies in Synaptic. Or,
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo install pdftk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/dd&gt;
     &lt;/dl&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;dl&gt;
       &lt;dt&gt;&lt;em&gt;Fedora 32:&lt;/em&gt;&lt;/dt&gt;
-      &lt;dd&gt;PDFtk is not contained in any Fedora 32 offical repositories. Fortunately, PDFtk has been built in Fedora 30, and successfully tested in Fedora 32. We can download its rpm packages &lt;a href=&quot;https://sandbox.mc.edu/~bennet/pdftk.html&quot; title=&quot;PDFtk for Fedora 32&quot;&gt;HERE&lt;/a&gt;. Then, install by the following command-line on your local PC.&lt;/dd&gt;
+      &lt;dd&gt;PDFtk is not contained in any Fedora 32 offical repositories. Fortunately, PDFtk has been built in Fedora 30, and successfully tested in Fedora 32. We can download its rpm packages &lt;a href=&quot;https://sandbox.mc.edu/~bennet/pdftk.html&quot; title=&quot;PDFtk for Fedora 32&quot;&gt;HERE&lt;/a&gt;. Then, install by the following command-line on your local PC.
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo dnf install [downloaded rpm path]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/dd&gt;
     &lt;/dl&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo dnf install [downloaded rpm path]&lt;/code&gt;&lt;/p&gt;
 
 &lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; There are two packages to be downloaded. The package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc6-libgcj-6.5.0-2.fc30.x86_64.rpm&lt;/code&gt; should be firstly installed since it is the dependency of the package &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pdftk-2.02-2.fc30.x86_64.rpm&lt;/code&gt;.&lt;/p&gt;
 
